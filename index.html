@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.4.1 股票名稱版</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.5 自選股決策儀表板</title>
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#182235;--mut:#6d788a;--line:#e3e8f0;--g:#108655;--g2:#e9f8f0;--y:#b57910;--y2:#fff5d8;--r:#d43c3c;--r2:#fff0f0;--b:#376bdc;--b2:#edf3ff;--p:#7650c9;--p2:#f3eeff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;color:var(--ink)}.wrap{max-width:1120px;margin:auto;padding:18px 14px 60px}.hero{background:linear-gradient(135deg,#172238,#315083);color:#fff;border-radius:26px;padding:27px;box-shadow:0 14px 34px #1d2b4620}.hero h1{margin:0 0 8px;font-size:29px}.hero p{margin:0;line-height:1.7;color:#dfe8fa}.search{display:flex;gap:10px;margin-top:18px}.search input{flex:1;min-width:0;border:0;border-radius:14px;padding:15px;font-size:18px}.search button{border:0;border-radius:14px;padding:0 24px;font-weight:900;cursor:pointer}.chips,.tags{display:flex;gap:8px;flex-wrap:wrap}.chips{margin-top:12px}.chip{background:#ffffff12;color:white;border:1px solid #ffffff40;border-radius:999px;padding:7px 11px;cursor:pointer}.status{display:none;margin:14px 0;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:#fff;line-height:1.65}.ok{background:#edf9f2;color:#11663f;border-color:#bfe6cf}.warn{background:#fff8db;color:#795b00;border-color:#f2d46c}.head{display:flex;justify-content:space-between;align-items:end;margin:22px 2px 12px}.name{font-size:26px;font-weight:950}.price{font-size:31px;font-weight:950;text-align:right}.sub{font-size:12px;color:var(--mut);margin-top:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px #1b2a4810}.full{grid-column:1/-1}.card h2{font-size:17px;margin:0 0 12px}.g{border-top:5px solid var(--g)}.y{border-top:5px solid #dfa228}.r{border-top:5px solid var(--r)}.b{border-top:5px solid var(--b)}.p{border-top:5px solid var(--p)}.big{font-size:28px;font-weight:950;margin:4px 0 10px}.green{color:var(--g)}.amber{color:var(--y)}.red{color:var(--r)}.pill,.tag{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}.pg{background:var(--g2);color:var(--g)}.py{background:var(--y2);color:var(--y)}.pr{background:var(--r2);color:var(--r)}.pb{background:var(--b2);color:var(--b)}.pp{background:var(--p2);color:var(--p)}.rows{border-top:1px solid var(--line);margin-top:12px;padding-top:7px}.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:14px}.row span{color:var(--mut)}.ex{margin-top:10px;padding:11px 12px;border-radius:12px;background:#f7f9fc;line-height:1.75;font-size:14px}.peergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.peer{padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#fafbfe}.peer b{display:block}.peer small{color:var(--mut);line-height:1.5}.flag{font-size:16px;margin-right:5px}.score{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.check{padding:8px 10px;border-radius:10px;background:#f1f3f7;font-size:13px}.yes{background:var(--g2);color:var(--g)}.no{background:var(--r2);color:var(--r)}.summary{font-size:16px;line-height:1.9}.meter{height:16px;border-radius:99px;background:linear-gradient(90deg,#bcebd2 0 38%,#f7dfa4 38% 62%,#ffc6c6 62%);position:relative;margin:30px 8px 40px}.needle{position:absolute;top:-8px;width:4px;height:32px;background:#172033;border-radius:3px;transform:translateX(-50%)}.needle:after{content:'現價';position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900}.levels{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:12px}.levels b{display:block;font-size:13px}.map{display:flex;align-items:center;gap:8px;overflow:auto;padding:12px 0}.node{min-width:130px;padding:12px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);text-align:center;font-size:13px}.arrow{font-size:22px;color:#9aa5b6}.note{font-size:12px;color:var(--mut);line-height:1.7;margin-top:16px}canvas{width:100%;height:230px;background:#fbfcfe;border-radius:12px}
@@ -7,12 +7,14 @@
 .wrefresh{border:0;background:#eef2f6;color:#172238;border-radius:9px;padding:6px 8px;font-weight:800;min-height:32px;font-size:12px}
 .wstatus{font-size:11px;color:#667085;display:block;margin-top:3px}
 @media(max-width:720px){.watchhead{align-items:flex-start;gap:8px;flex-direction:column}.watchhead>div{width:100%;justify-content:flex-start!important}.watchhead input{flex:1;width:auto!important}}
-</style></head><body><div class="wrap"><div class="mobile-search"><input id="mcode" inputmode="numeric" placeholder="股票代碼，例如 6217"><button id="mgo">查詢</button></div><div class="watchbar" id="watchbar"></div><section class="watchpanel" id="myWatchPanel"><div class="watchhead"><h2>⭐ 我的自選股</h2><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+<style id="v65css">
+.posbadge{display:inline-block;padding:5px 8px;border-radius:999px;font-weight:900;font-size:12px;white-space:nowrap}.pos-green{background:#e8f7ef;color:#087443}.pos-yellow{background:#fff6d8;color:#8a6500}.pos-red{background:#fdebea;color:#b42318}.pos-blue{background:#eaf2ff;color:#175cd3}.pos-gray{background:#f0f2f5;color:#475467}.dist{font-weight:900}.todaynote{max-width:240px;white-space:normal!important;text-align:left!important;line-height:1.45}.strength{font-weight:900}.watchtable{min-width:1180px}@media(max-width:720px){.watchtable{min-width:1120px}.todaynote{max-width:210px}}
+</style></style></head><body><div class="wrap"><div class="mobile-search"><input id="mcode" inputmode="numeric" placeholder="股票代碼，例如 6217"><button id="mgo">查詢</button></div><div class="watchbar" id="watchbar"></div><section class="watchpanel" id="myWatchPanel"><div class="watchhead"><h2>⭐ 我的自選股</h2><div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
 <input id="watchCode" inputmode="numeric" placeholder="股票代碼" style="width:112px;min-height:40px;border:1px solid #d8dee8;border-radius:10px;padding:0 9px">
 <button class="wadd" id="addWatchCode">＋ 加入</button>
 <button class="wadd" id="addCurrentWatch" style="background:#475467">⭐ 加入目前股票</button>
-</div></div><div class="watchtablewrap"><table class="watchtable"><thead><tr><th>我的自選股</th><th>近端支撐</th><th>次近端支撐</th><th>第一壓力</th><th>第二壓力</th></tr></thead><tbody id="watchRows"></tbody></table></div><div class="sub" style="margin-top:8px">手機可左右滑動。點股票可直接進入完整分析；價格會保存最近一次分析結果。</div></section>
-<section class="hero"><h1>📈 台股全景小幫手 V6.4.1 股票名稱版</h1><p>支撐壓力只是第一步。現在一起看：趨勢、量能、大盤相對強弱、族群同步、突破品質、台美供應鏈。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button></div></section>
+</div></div><div class="watchtablewrap"><table class="watchtable"><thead><tr><th>我的自選股</th><th>現價</th><th>位置燈號</th><th>近端支撐</th><th>距支撐</th><th>次近端支撐</th><th>第一壓力</th><th>距壓力</th><th>第二壓力</th><th>壓力強度</th><th>今日變化</th></tr></thead><tbody id="watchRows"></tbody></table></div><div class="sub" style="margin-top:8px">手機可左右滑動。🟢靠近支撐／🟡整理區／🔴靠近壓力／🚀突破觀察／⚠️跌破支撐。距離百分比以最新收盤價計算。</div></section>
+<section class="hero"><h1>📈 台股全景小幫手 V6.5 自選股決策儀表板</h1><p>V6.5 新增自選股決策儀表板：距支撐／壓力%、位置燈號、壓力強度與今日變化；並保留趨勢、量能、族群與台美供應鏈。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button></div></section>
 <section class="card full" style="margin-top:14px;border-top:5px solid #172238">
 <h2>📡 今日看盤雷達</h2>
 <div class="ex">先看「昨夜美股 → 台股族群」，再決定今天要深入查哪一檔。資料改由 Cloudflare 安全代理取得，不需要在手機或網頁輸入 FinMind Token。</div>
@@ -168,64 +170,55 @@ function draw(){let b=document.getElementById("watchRows");if(!b)return;let c=ca
 document.addEventListener("DOMContentLoaded",()=>{draw();document.getElementById("addCurrentWatch").onclick=()=>{let x=document.getElementById("code").value.trim(),z=[...new Set([...ls(),x])];if(/^\d{4,6}$/.test(x)){localStorage.setItem(K,JSON.stringify(z));draw()}};
 let r=document.getElementById("result");if(r)new MutationObserver(()=>setTimeout(()=>{let x=document.getElementById("code").value.trim(),s=r.innerText;if(!x||!s)return;let g=(q)=>{let m=s.match(new RegExp(q+"[^0-9]{0,100}([0-9]+(?:\\\\.[0-9]+)?)"));return m?m[1]:null};let v={a:g("近端支撐"),b:g("次近端支撐")||g("20日低點"),c:g("第一壓力")||g("關鍵突破"),d:g("第二壓力")};if(Object.values(v).some(Boolean)){let c=ca();c[x]=v;localStorage.setItem(C,JSON.stringify(c));draw()}},300)).observe(r,{childList:true,subtree:true,characterData:true})});
 })();
-</script><script id="v63watch">
+</script><script id="v65watch">
 (function(){
-const K="tw_watch_v63", C="tw_levels_v63";
+const K="tw_watch_v63", C="tw_levels_v65";
 const defaults=["2330","6217","6223","2382"];
 function list(){try{return JSON.parse(localStorage.getItem(K)||JSON.stringify(defaults))}catch(e){return defaults.slice()}}
 function save(a){localStorage.setItem(K,JSON.stringify([...new Set(a.filter(Boolean))]));draw()}
-function levels(){try{return JSON.parse(localStorage.getItem(C)||"{}")}catch(e){return {}}}
+function levels(){try{return JSON.parse(localStorage.getItem(C)||"{}") }catch(e){return {}}}
 function saveLevels(x){localStorage.setItem(C,JSON.stringify(x))}
 function f(n){return Number.isFinite(n)?n.toFixed(n<100?2:1):"—"}
+function pct(cur,target){return Number.isFinite(cur)&&Number.isFinite(target)&&target?((cur-target)/target*100):null}
+function dp(n){return Number.isFinite(n)?`${n>=0?"+":""}${n.toFixed(1)}%`:"—"}
+function av(a){return a.length?a.reduce((s,x)=>s+x,0)/a.length:0}
 function calc(rows){
  rows=rows.slice().sort((a,b)=>a.key-b.key); if(rows.length<30)return null;
- const cl=rows.map(x=>x.close), lo=rows.map(x=>x.low), hi=rows.map(x=>x.high);
- const av=a=>a.reduce((s,x)=>s+x,0)/a.length, cur=cl.at(-1);
- const ma10=av(cl.slice(-10)),ma20=av(cl.slice(-20));
- // Near support only uses averages at/below current when possible.
+ const cl=rows.map(x=>x.close), lo=rows.map(x=>x.low), hi=rows.map(x=>x.high), vol=rows.map(x=>x.volume);
+ const cur=cl.at(-1), prev=cl.at(-2), ma10=av(cl.slice(-10)), ma20=av(cl.slice(-20));
  let supports=[ma10,ma20].filter(x=>x<=cur*1.005);
  let near=supports.length?Math.max(...supports):Math.min(ma10,ma20);
  let second=Math.min(...lo.slice(-20));
- // Reproduce simple swing-high clustering close to app logic.
- let highs=[]; for(let i=Math.max(2,rows.length-120);i<rows.length-2;i++){
-   if(hi[i]>=hi[i-1]&&hi[i]>=hi[i-2]&&hi[i]>=hi[i+1]&&hi[i]>=hi[i+2]) highs.push(hi[i]);
- }
- highs.push(Math.max(...hi.slice(-20)));
- highs=highs.filter(x=>x>cur*1.002).sort((a,b)=>a-b);
- let clusters=[];
- for(let x of highs){let q=clusters.find(c=>Math.abs(x-c.reduce((s,z)=>s+z,0)/c.length)/(c.reduce((s,z)=>s+z,0)/c.length)<=.018);q?q.push(x):clusters.push([x])}
- let rs=clusters.map(c=>av(c)).sort((a,b)=>a-b), r1=rs[0]||cur*1.03, r2=rs.find(x=>x>r1*1.025)||rs[1]||r1*1.05;
- return {near,second,r1,r2,date:rows.at(-1).date};
+ let highs=[]; for(let i=Math.max(2,rows.length-120);i<rows.length-2;i++){if(hi[i]>=hi[i-1]&&hi[i]>=hi[i-2]&&hi[i]>=hi[i+1]&&hi[i]>=hi[i+2]) highs.push(hi[i])}
+ highs.push(Math.max(...hi.slice(-20))); highs=highs.filter(x=>x>cur*.97).sort((a,b)=>a-b);
+ let clusters=[]; for(let x of highs){let q=clusters.find(c=>Math.abs(x-av(c))/av(c)<=.018);q?q.push(x):clusters.push([x])}
+ let rs=clusters.map(c=>({price:av(c),hits:c.length})).filter(x=>x.price>cur*1.002).sort((a,b)=>a.price-b.price);
+ let first=rs[0]||{price:cur*1.03,hits:1}, secondR=rs.find(x=>x.price>first.price*1.025)||rs[1]||{price:first.price*1.05,hits:1};
+ const prior20=vol.slice(-21,-1), volRatio=prior20.length&&av(prior20)>0?vol.at(-1)/av(prior20):null;
+ const dayPct=prev?((cur-prev)/prev*100):null;
+ const supportDist=pct(cur,near), resistDist=(first.price-cur)/cur*100;
+ let status="🟡 整理區", cls="pos-yellow";
+ if(cur<second){status="⚠️ 跌破支撐";cls="pos-red"}
+ else if(cur>first.price){status="🚀 突破觀察";cls="pos-blue"}
+ else if(supportDist!==null&&supportDist>=0&&supportDist<=2.5){status="🟢 靠近支撐";cls="pos-green"}
+ else if(resistDist>=0&&resistDist<=2.5){status="🔴 靠近壓力";cls="pos-red"}
+ const strength=first.hits>=3?"⭐⭐⭐ 高":first.hits==2?"⭐⭐ 中":"⭐ 一般";
+ let notes=[]; if(Number.isFinite(dayPct))notes.push(`今日 ${dp(dayPct)}`);
+ notes.push(cur>=ma10?"站上MA10":"低於MA10");
+ if(Number.isFinite(volRatio))notes.push(`量 ${volRatio.toFixed(2)}×`);
+ if(cur>first.price)notes.push("已越過第一壓力"); else if(resistDist<=3)notes.push("接近第一壓力");
+ return {cur,near,second,r1:first.price,r2:secondR.price,date:rows.at(-1).date,supportDist,resistDist,status,cls,strength,today:notes.join("・"),dayPct,volRatio};
 }
-async function fetchRows(code){
- // Prefer existing FinMind helper, which includes the saved token.
- let d=await fm("TaiwanStockPrice",code,isoDaysAgo(240));
- if(!d||!d.length)throw Error("無資料");
- return d.map(x=>({key:Number(String(x.date).replaceAll("-","")),date:x.date,volume:Number(x.Trading_Volume??0),high:Number(x.max),low:Number(x.min),close:Number(x.close)})).filter(x=>Number.isFinite(x.close)&&Number.isFinite(x.high)&&Number.isFinite(x.low));
-}
+async function fetchRows(code){let d=await fm("TaiwanStockPrice",code,isoDaysAgo(240));if(!d||!d.length)throw Error("無資料");return d.map(x=>({key:Number(String(x.date).replaceAll("-","")),date:x.date,volume:Number(x.Trading_Volume??0),high:Number(x.max),low:Number(x.min),close:Number(x.close)})).filter(x=>Number.isFinite(x.close)&&Number.isFinite(x.high)&&Number.isFinite(x.low));}
 function draw(){
  const tb=document.getElementById("watchRows");if(!tb)return;const c=levels();
- tb.innerHTML=list().map(code=>{let x=c[code]||{},nm=stockName(code);
- return `<tr><td><a href="#" data-open="${code}" style="color:#172238;text-decoration:none"><b>${code}${nm?" "+nm:""}</b></a><span class="wstatus">${x.date?"更新 "+x.date:"尚未更新"}</span><button class="wrefresh" data-refresh="${code}">↻ 更新</button> <button data-del="${code}" style="border:0;background:none;font-size:18px">×</button></td><td class="s1">${f(x.near)}</td><td class="s2">${f(x.second)}</td><td class="rr">${f(x.r1)}</td><td class="rr">${f(x.r2)}</td></tr>`}).join("")||'<tr><td colspan="5">尚未加入自選股</td></tr>';
+ tb.innerHTML=list().map(code=>{let x=c[code]||{},nm=stockName(code);return `<tr><td><a href="#" data-open="${code}" style="color:#172238;text-decoration:none"><b>${code}${nm?" "+nm:""}</b></a><span class="wstatus">${x.date?"更新 "+x.date:"尚未更新"}</span><button class="wrefresh" data-refresh="${code}">↻ 更新</button> <button data-del="${code}" style="border:0;background:none;font-size:18px">×</button></td><td><b>${f(x.cur)}</b></td><td><span class="posbadge ${x.cls||'pos-gray'}">${x.status||'尚未計算'}</span></td><td class="s1">${f(x.near)}</td><td class="s1 dist">${dp(x.supportDist)}</td><td class="s2">${f(x.second)}</td><td class="rr">${f(x.r1)}</td><td class="rr dist">${Number.isFinite(x.resistDist)?x.resistDist.toFixed(1)+'%':'—'}</td><td class="rr">${f(x.r2)}</td><td class="strength">${x.strength||'—'}</td><td class="todaynote">${x.today||'按 ↻ 更新取得今日狀態'}</td></tr>`}).join("")||'<tr><td colspan="11">尚未加入自選股</td></tr>';
  tb.querySelectorAll("[data-open]").forEach(a=>a.onclick=e=>{e.preventDefault();let d=document.getElementById("code"),m=document.getElementById("mcode");d.value=a.dataset.open;if(m)m.value=a.dataset.open;document.getElementById("go").click()});
  tb.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>save(list().filter(x=>x!==b.dataset.del)));
  tb.querySelectorAll("[data-refresh]").forEach(b=>b.onclick=()=>refreshOne(b.dataset.refresh,b));
 }
-async function refreshOne(code,btn){
- const old=btn?.textContent;if(btn){btn.disabled=true;btn.textContent="…"}
- try{let r=calc(await fetchRows(code));if(!r)throw Error("資料不足");let c=levels();c[code]=r;saveLevels(c);draw()}
- catch(e){alert(`${code} 更新失敗：${e.message}\n請先用「API 連線測試」確認 Cloudflare Worker。`)}
- finally{if(btn&&document.body.contains(btn)){btn.disabled=false;btn.textContent=old}}
-}
-async function addCode(code){
- code=(code||"").trim();if(!/^\d{4,6}$/.test(code)){alert("請輸入正確股票代碼，例如 6217");return}
- save([...list(),code]); let b=document.querySelector(`[data-refresh="${code}"]`); await refreshOne(code,b);
-}
-document.addEventListener("DOMContentLoaded",()=>{
- draw();
- document.getElementById("addWatchCode").onclick=()=>addCode(document.getElementById("watchCode").value);
- document.getElementById("watchCode").addEventListener("keydown",e=>{if(e.key==="Enter")addCode(e.target.value)});
- document.getElementById("addCurrentWatch").onclick=()=>addCode(document.getElementById("code")?.value);
-});
+async function refreshOne(code,btn){const old=btn?.textContent;if(btn){btn.disabled=true;btn.textContent="…"}try{let r=calc(await fetchRows(code));if(!r)throw Error("資料不足");let c=levels();c[code]=r;saveLevels(c);draw()}catch(e){alert(`${code} 更新失敗：${e.message}\n請先用「API 連線測試」確認 Cloudflare Worker。`)}finally{if(btn&&document.body.contains(btn)){btn.disabled=false;btn.textContent=old}}}
+async function addCode(code){code=(code||"").trim();if(!/^\d{4,6}$/.test(code)){alert("請輸入正確股票代碼，例如 6217");return}save([...list(),code]);let b=document.querySelector(`[data-refresh="${code}"]`);await refreshOne(code,b)}
+document.addEventListener("DOMContentLoaded",()=>{draw();document.getElementById("addWatchCode").onclick=()=>addCode(document.getElementById("watchCode").value);document.getElementById("watchCode").addEventListener("keydown",e=>{if(e.key==="Enter")addCode(e.target.value)});document.getElementById("addCurrentWatch").onclick=()=>addCode(document.getElementById("code")?.value);});
 })();
 </script></body></html>

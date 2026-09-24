@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.10 雲端快取雷達版</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.11 爆量／縮量雙雷達版</title>
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#182235;--mut:#6d788a;--line:#e3e8f0;--g:#108655;--g2:#e9f8f0;--y:#b57910;--y2:#fff5d8;--r:#d43c3c;--r2:#fff0f0;--b:#376bdc;--b2:#edf3ff;--p:#7650c9;--p2:#f3eeff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;color:var(--ink)}.wrap{max-width:1120px;margin:auto;padding:18px 14px 60px}.hero{background:linear-gradient(135deg,#172238,#315083);color:#fff;border-radius:26px;padding:27px;box-shadow:0 14px 34px #1d2b4620}.hero h1{margin:0 0 8px;font-size:29px}.hero p{margin:0;line-height:1.7;color:#dfe8fa}.search{display:flex;gap:10px;margin-top:18px}.search input{flex:1;min-width:0;border:0;border-radius:14px;padding:15px;font-size:18px}.search button{border:0;border-radius:14px;padding:0 24px;font-weight:900;cursor:pointer}.chips,.tags{display:flex;gap:8px;flex-wrap:wrap}.chips{margin-top:12px}.chip{background:#ffffff12;color:white;border:1px solid #ffffff40;border-radius:999px;padding:7px 11px;cursor:pointer}.status{display:none;margin:14px 0;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:#fff;line-height:1.65}.ok{background:#edf9f2;color:#11663f;border-color:#bfe6cf}.warn{background:#fff8db;color:#795b00;border-color:#f2d46c}.head{display:flex;justify-content:space-between;align-items:end;margin:22px 2px 12px}.name{font-size:26px;font-weight:950}.price{font-size:31px;font-weight:950;text-align:right}.sub{font-size:12px;color:var(--mut);margin-top:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px #1b2a4810}.full{grid-column:1/-1}.card h2{font-size:17px;margin:0 0 12px}.g{border-top:5px solid var(--g)}.y{border-top:5px solid #dfa228}.r{border-top:5px solid var(--r)}.b{border-top:5px solid var(--b)}.p{border-top:5px solid var(--p)}.big{font-size:28px;font-weight:950;margin:4px 0 10px}.green{color:var(--g)}.amber{color:var(--y)}.red{color:var(--r)}.pill,.tag{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}.pg{background:var(--g2);color:var(--g)}.py{background:var(--y2);color:var(--y)}.pr{background:var(--r2);color:var(--r)}.pb{background:var(--b2);color:var(--b)}.pp{background:var(--p2);color:var(--p)}.rows{border-top:1px solid var(--line);margin-top:12px;padding-top:7px}.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:14px}.row span{color:var(--mut)}.ex{margin-top:10px;padding:11px 12px;border-radius:12px;background:#f7f9fc;line-height:1.75;font-size:14px}.peergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.peer{padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#fafbfe}.peer b{display:block}.peer small{color:var(--mut);line-height:1.5}.flag{font-size:16px;margin-right:5px}.score{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.check{padding:8px 10px;border-radius:10px;background:#f1f3f7;font-size:13px}.yes{background:var(--g2);color:var(--g)}.no{background:var(--r2);color:var(--r)}.summary{font-size:16px;line-height:1.9}.meter{height:16px;border-radius:99px;background:linear-gradient(90deg,#bcebd2 0 38%,#f7dfa4 38% 62%,#ffc6c6 62%);position:relative;margin:30px 8px 40px}.needle{position:absolute;top:-8px;width:4px;height:32px;background:#172033;border-radius:3px;transform:translateX(-50%)}.needle:after{content:'現價';position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900}.levels{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:12px}.levels b{display:block;font-size:13px}.map{display:flex;align-items:center;gap:8px;overflow:auto;padding:12px 0}.node{min-width:130px;padding:12px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);text-align:center;font-size:13px}.arrow{font-size:22px;color:#9aa5b6}.note{font-size:12px;color:var(--mut);line-height:1.7;margin-top:16px}canvas{width:100%;height:230px;background:#fbfcfe;border-radius:12px}
@@ -14,7 +14,7 @@
 <button class="wadd" id="addWatchCode">＋ 加入</button>
 <button class="wadd" id="addCurrentWatch" style="background:#475467">⭐ 加入目前股票</button>
 </div></div><div class="watchtablewrap"><table class="watchtable"><thead><tr><th>我的自選股</th><th>現價</th><th>位置燈號</th><th>近端支撐</th><th>距支撐</th><th>次近端支撐</th><th>第一壓力</th><th>距壓力</th><th>第二壓力</th><th>壓力強度</th><th>今日變化</th></tr></thead><tbody id="watchRows"></tbody></table></div><div class="sub" style="margin-top:8px">手機可左右滑動。🟢靠近支撐／🟡整理區／🔴靠近壓力／🚀突破觀察／⚠️跌破支撐。距離百分比以最新收盤價計算。</div></section>
-<section class="hero"><h1>📈 台股全景小幫手 V6.10 雲端快取雷達版</h1><p>V6.10：量價異常雷達改由 Cloudflare Worker 統一計算並快取 Top 10；手機只讀結果，點股票才載入最近交易量明細。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button><button class="chip" data-code="2221">2221 大甲</button></div></section>
+<section class="hero"><h1>📈 台股全景小幫手 V6.11 爆量／縮量雙雷達版</h1><p>V6.11：量價異常雷達拆成「🔥 爆量 Top 10」與「💤 縮量 Top 10」；Cloudflare 一次掃描後分組快取，手機只讀結果。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button><button class="chip" data-code="2221">2221 大甲</button></div></section>
 <section class="card full" style="margin-top:14px;border-top:5px solid #172238">
 <h2>📡 今日看盤雷達</h2>
 <div class="ex">先看「昨夜美股 → 台股族群」，再決定今天要深入查哪一檔。資料改由 Cloudflare 安全代理取得，不需要在手機或網頁輸入 FinMind Token。</div>
@@ -27,12 +27,12 @@
 <div class="card g" style="margin-top:13px"><h2>🔥 今天先觀察哪些族群？</h2><div id="hotRadar" class="summary">按「更新今日雷達」後顯示。</div></div>
 </section>
 <section class="card full" style="margin-top:14px;border-top:5px solid #7c3aed">
-<h2>⚡ 量價異常雷達｜前10名</h2>
-<div class="ex">先看最值得注意的前10名：股票、量能狀況、漲跌與一句白話判讀。想知道最近幾天的成交量怎麼變，再點該股票看明細。</div>
-<div style="margin-top:10px"><button id="volumeRadarBtn" type="button" style="border:0;border-radius:12px;padding:11px 16px;font-weight:900;background:#7c3aed;color:#fff;cursor:pointer">掃描量價異常</button></div>
+<h2>⚡ 量價異常雷達</h2>
+<div class="ex">爆量與縮量分開看，主畫面一次只顯示一組 Top 10。想看細節，再點股票查看最近7個交易日。</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button id="volumeUpTab" type="button" style="border:0;border-radius:999px;padding:10px 15px;font-weight:900;background:#d43c3c;color:#fff;cursor:pointer">🔥 爆量 Top 10</button><button id="volumeDownTab" type="button" style="border:1px solid #d8dee8;border-radius:999px;padding:10px 15px;font-weight:900;background:#fff;color:#475467;cursor:pointer">💤 縮量 Top 10</button><button id="volumeRadarBtn" type="button" style="border:0;border-radius:12px;padding:10px 15px;font-weight:900;background:#7c3aed;color:#fff;cursor:pointer">重新掃描</button></div>
 <div id="volumeRadarState" class="sub" style="margin-top:8px"></div>
-<div id="volumeRadarList" class="peergrid" style="margin-top:12px"><div class="peer"><b>尚未掃描</b><small>優先掃描熱門族群＋自選股，顯示前10名</small></div></div>
-<div class="sub" style="margin-top:8px">主畫面刻意保持簡單；20日均量與量比仍在背景計算。點股票後才顯示最近7個交易日明細。</div>
+<div id="volumeRadarList" class="peergrid" style="margin-top:12px"><div class="peer"><b>尚未載入</b><small>預設先顯示爆量 Top 10</small></div></div>
+<div class="sub" style="margin-top:8px">🔥 爆量：量比 ≥ 1.2；💤 縮量：量比 &lt; 0.8。20日均量與量比在背景計算，不塞滿主畫面。</div>
 <div id="volumeDetail" style="display:none;margin-top:14px"></div>
 </section>
 <details style="margin:14px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 15px">
@@ -226,91 +226,21 @@ const VOLUME_RADAR_GROUPS={
  "半導體／設備":["2330","2454","3661","3443"]
 };
 const VOLUME_RADAR_POOL=[...new Set(Object.values(VOLUME_RADAR_GROUPS).flat())];
-const VOLUME_RADAR_CACHE_KEY="volumeRadarV610";
+const VOLUME_RADAR_CACHE_KEY="volumeRadarV611";
 const VOLUME_RADAR_CACHE_MS=4*60*60*1000;
+let volumeRadarMode="up", volumeRadarData={up:[],down:[],dataDate:null};
 function radarTheme(code){let a=[];for(let [g,ids] of Object.entries(VOLUME_RADAR_GROUPS))if(ids.includes(code))a.push(g);return a[0]||"自選股"}
 function getVolumeRadarCache(){try{let x=JSON.parse(localStorage.getItem(VOLUME_RADAR_CACHE_KEY)||"null");return x&&Date.now()-x.savedAt<VOLUME_RADAR_CACHE_MS?x:null}catch(e){return null}}
-function saveVolumeRadarCache(items){try{localStorage.setItem(VOLUME_RADAR_CACHE_KEY,JSON.stringify({savedAt:Date.now(),items}))}catch(e){}}
+function saveVolumeRadarCache(data){try{localStorage.setItem(VOLUME_RADAR_CACHE_KEY,JSON.stringify({savedAt:Date.now(),...data}))}catch(e){}}
+function volumeLabel(ratio,chg){let level,icon;if(ratio>=3){level="極端爆量";icon="🔥🔥"}else if(ratio>=2){level="突然爆量";icon="🔥🔥"}else if(ratio>=1.5){level="明顯放量";icon="🔥"}else if(ratio>=1.2){level="量增加";icon="👀"}else if(ratio<0.5){level="明顯縮量";icon="😴"}else if(ratio<0.8){level="量減少";icon="💤"}else{level="普通";icon="⚪"}let combo=chg>=2&&ratio>=1.5?"量增＋價漲":chg<=-2&&ratio>=1.5?"量增＋價跌":chg>0&&ratio<0.8?"上漲但量縮":chg<0&&ratio<0.8?"下跌且量縮":chg>0?"股價上漲":"股價下跌";return{level,icon,combo}}
+function volPlain(ratio,chg,prevRatio){if(ratio>=2.5&&chg>=2)return "🔥🔥 再放大＋大漲";if(ratio>=2&&chg>=2)return "🔥 突然爆量＋大漲";if(ratio>=2&&chg<0)return "⚠️ 爆量但下跌";if(ratio>=1.5&&prevRatio!=null&&ratio>prevRatio*1.15)return "🔥 又增加";if(ratio>=1.5)return "👀 量還在";if(ratio>=1.2)return "👀 稍微增加";if(ratio<.5)return "😴 明顯縮量";if(ratio<.8)return "💤 量減少";return "普通"}
+async function showVolumeDetail(code){let box=$("volumeDetail");box.style.display="block";box.innerHTML='<div class="ex">⏳ 正在讀取最近成交量…</div>';try{let d=await fm("TaiwanStockPrice",code,isoDaysAgo(90));d=d.map(x=>({date:x.date,volume:Number(x.Trading_Volume??x.trading_volume??0),close:Number(x.close)})).filter(x=>Number.isFinite(x.volume)&&Number.isFinite(x.close)&&x.volume>0);let rows=[];for(let i=Math.max(20,d.length-7);i<d.length;i++){let base=d.slice(Math.max(0,i-20),i).map(x=>x.volume),mean=avg(base),ratio=mean?d[i].volume/mean:1;let chg=i?((d[i].close-d[i-1].close)/d[i-1].close*100):0;let prevRatio=null;if(i>20){let pb=d.slice(Math.max(0,i-21),i-1).map(x=>x.volume),pm=avg(pb);prevRatio=pm?d[i-1].volume/pm:null}rows.push({...d[i],ratio,chg,note:volPlain(ratio,chg,prevRatio)})}let latest=rows.at(-1),summary=latest.ratio>=1.5&&latest.chg>0?"最近量能明顯增加，股價也同步走高；接下來觀察量能能否維持，以及是否突破壓力。":latest.ratio>=1.5&&latest.chg<0?"成交量明顯增加，但股價下跌；先留意賣壓是否持續，以及近端支撐能不能守住。":latest.ratio<.8?"最近成交量偏低，市場交易降溫；先觀察量是否重新回來。":"目前量能沒有特別極端，搭配支撐、壓力與股價方向一起看即可。";box.innerHTML=`<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h2 style="margin:0">📊 ${code} ${stockName(code)||""}｜最近交易量</h2><button type="button" onclick="document.getElementById('volumeDetail').style.display='none'" style="border:0;background:#f0f2f5;border-radius:9px;padding:7px 10px">收起</button></div><div style="overflow-x:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;min-width:520px;font-size:13px"><thead><tr><th style="text-align:left;padding:8px;border-bottom:1px solid #ddd">日期</th><th style="text-align:right;padding:8px;border-bottom:1px solid #ddd">收盤價</th><th style="text-align:right;padding:8px;border-bottom:1px solid #ddd">成交量</th><th style="text-align:left;padding:8px;border-bottom:1px solid #ddd">我們先怎麼看</th></tr></thead><tbody>${rows.map(r=>`<tr><td style="padding:9px 8px;border-bottom:1px solid #eee">${String(r.date).slice(5).replace('-','/')}</td><td style="text-align:right;padding:9px 8px;border-bottom:1px solid #eee">${fmt(r.close)}</td><td style="text-align:right;padding:9px 8px;border-bottom:1px solid #eee"><b>${Math.round(r.volume/1000).toLocaleString()}張</b></td><td style="padding:9px 8px;border-bottom:1px solid #eee">${r.note}</td></tr>`).join('')}</tbody></table></div><div class="ex" style="margin-top:12px"><b>💡 白話解讀</b><br>${summary}</div></div>`;box.scrollIntoView({behavior:"smooth",block:"nearest"})}catch(e){box.innerHTML=`<div class="ex">⚠️ 明細讀取失敗：${e.message}</div>`}}
+function setVolumeRadarMode(mode){volumeRadarMode=mode;let up=$("volumeUpTab"),down=$("volumeDownTab");if(up){up.style.background=mode==="up"?"#d43c3c":"#fff";up.style.color=mode==="up"?"#fff":"#475467";up.style.border=mode==="up"?"0":"1px solid #d8dee8"}if(down){down.style.background=mode==="down"?"#475467":"#fff";down.style.color=mode==="down"?"#fff":"#475467";down.style.border=mode==="down"?"0":"1px solid #d8dee8"}renderVolumeRadar(volumeRadarData[mode]||[],false)}
+function renderVolumeRadar(out,fromCache=false){let state=$("volumeRadarState"),box=$("volumeRadarList"),label=volumeRadarMode==="up"?"🔥 爆量":"💤 縮量";if(!out.length){box.innerHTML=`<div class="peer"><b>今天沒有${label}股票</b><small>目前熱門族群沒有符合門檻的股票。</small></div>`;state.textContent=`${label} Top 10｜目前無符合資料`;return}box.innerHTML=out.map((x,i)=>`<button type="button" class="peer" onclick="showVolumeDetail('${x.code}')" style="text-align:left;cursor:pointer;font:inherit;color:inherit"><b>${i+1}. ${x.code} ${x.name||""}</b><small>${x.icon} ${x.level}｜${x.theme||radarTheme(x.code)}｜股價 ${x.chg>=0?"+":""}${x.chg.toFixed(1)}%<br><b>${x.combo}</b>　› 點我看明細</small></button>`).join("");state.textContent=`資料日 ${volumeRadarData.dataDate||out[0].date}｜${label} Top ${out.length}${fromCache?"｜⚡ 已使用快取":""}`}
+async function runVolumeRadar(force=false){let btn=$("volumeRadarBtn"),state=$("volumeRadarState");if(!force){let cached=getVolumeRadarCache();if(cached&&(cached.up?.length||cached.down?.length)){volumeRadarData={up:cached.up||[],down:cached.down||[],dataDate:cached.dataDate||null};renderVolumeRadar(volumeRadarData[volumeRadarMode],true);return}}btn.disabled=true;btn.textContent="讀取中…";state.textContent=force?"☁️ 正在請 Cloudflare 重新整理雙雷達…":"☁️ 正在讀取 Cloudflare 已整理好的雙雷達…";try{let url=PROXY+"/radar"+(force?"?refresh=1":""),r=await fetch(url,{cache:"no-store"}),j=await r.json();if(!r.ok||!j.ok)throw new Error(j.error||j.message||("HTTP "+r.status));let up=(j.volumeUpTop10||[]).map(x=>({...x,theme:x.theme||radarTheme(x.code)})),down=(j.volumeDownTop10||[]).map(x=>({...x,theme:x.theme||radarTheme(x.code)}));volumeRadarData={up,down,dataDate:j.dataDate||up[0]?.date||down[0]?.date||null};saveVolumeRadarCache(volumeRadarData);renderVolumeRadar(volumeRadarData[volumeRadarMode],!!j.cached)}catch(e){let cached=getVolumeRadarCache();if(cached&&(cached.up?.length||cached.down?.length)){volumeRadarData={up:cached.up||[],down:cached.down||[],dataDate:cached.dataDate||null};renderVolumeRadar(volumeRadarData[volumeRadarMode],true);state.textContent="⚠️ 雲端雷達暫時無法更新，先顯示手機快取"}else{state.textContent="⚠️ 雷達讀取失敗："+e.message;$("volumeRadarList").innerHTML='<div class="peer"><b>暫時讀不到雷達</b><small>稍後再按一次重新掃描即可；個股分析不受影響。</small></div>'}}finally{btn.disabled=false;btn.textContent="重新掃描"}}
+document.addEventListener("DOMContentLoaded",()=>{let b=$("volumeRadarBtn"),u=$("volumeUpTab"),d=$("volumeDownTab");if(b)b.onclick=()=>runVolumeRadar(true);if(u)u.onclick=()=>setVolumeRadarMode("up");if(d)d.onclick=()=>setVolumeRadarMode("down");let c=getVolumeRadarCache();if(c&&(c.up?.length||c.down?.length)){volumeRadarData={up:c.up||[],down:c.down||[],dataDate:c.dataDate||null};renderVolumeRadar(volumeRadarData.up,true)}else runVolumeRadar(false)});
 
-function volumeLabel(ratio,chg){
- let level,icon;
- if(ratio>=3){level="極端爆量";icon="🔥🔥"}
- else if(ratio>=2){level="突然爆量";icon="🔥🔥"}
- else if(ratio>=1.5){level="明顯放量";icon="🔥"}
- else if(ratio>=1.2){level="量增加";icon="👀"}
- else if(ratio<0.5){level="明顯縮量";icon="😴"}
- else if(ratio<0.8){level="量減少";icon="💤"}
- else {level="普通";icon="⚪"}
- let combo=chg>=2&&ratio>=1.5?"量增＋價漲":chg<=-2&&ratio>=1.5?"量增＋價跌":chg>0&&ratio<0.8?"上漲但量縮":chg<0&&ratio<0.8?"下跌且量縮":chg>0?"股價上漲":"股價下跌";
- return {level,icon,combo};
-}
-function volPlain(ratio,chg,prevRatio){
- if(ratio>=2.5&&chg>=2)return "🔥🔥 再放大＋大漲";
- if(ratio>=2&&chg>=2)return "🔥 突然爆量＋大漲";
- if(ratio>=2&&chg<0)return "⚠️ 爆量但下跌";
- if(ratio>=1.5&&prevRatio!=null&&ratio>prevRatio*1.15)return "🔥 又增加";
- if(ratio>=1.5)return "👀 量還在";
- if(ratio>=1.2)return "👀 稍微增加";
- if(ratio<.5)return "😴 明顯縮量";
- if(ratio<.8)return "💤 量減少";
- return "普通";
-}
-async function volumeRadarOne(code){
- let d=await fm("TaiwanStockPrice",code,isoDaysAgo(90));
- if(!d||d.length<22)return null;
- d=d.map(x=>({date:x.date,volume:Number(x.Trading_Volume??x.trading_volume??0),close:Number(x.close)})).filter(x=>Number.isFinite(x.volume)&&Number.isFinite(x.close)&&x.volume>0);
- if(d.length<22)return null;
- let last=d.at(-1),prev=d.at(-2),base=d.slice(-21,-1).map(x=>x.volume),mean=avg(base),ratio=mean?last.volume/mean:null;
- if(!Number.isFinite(ratio))return null;
- let chg=(last.close-prev.close)/prev.close*100, lab=volumeLabel(ratio,chg);
- let anomaly=ratio>=1?ratio:(1/Math.max(ratio,.01));
- return {code,name:stockName(code),date:last.date,ratio,chg,volume:last.volume,avg20:mean,anomaly,...lab};
-}
-async function showVolumeDetail(code){
- let box=$("volumeDetail"); box.style.display="block"; box.innerHTML='<div class="ex">⏳ 正在讀取最近成交量…</div>';
- try{
-  let d=await fm("TaiwanStockPrice",code,isoDaysAgo(90));
-  d=d.map(x=>({date:x.date,volume:Number(x.Trading_Volume??x.trading_volume??0),close:Number(x.close)})).filter(x=>Number.isFinite(x.volume)&&Number.isFinite(x.close)&&x.volume>0);
-  let rows=[];
-  for(let i=Math.max(20,d.length-7);i<d.length;i++){
-   let base=d.slice(Math.max(0,i-20),i).map(x=>x.volume),mean=avg(base),ratio=mean?d[i].volume/mean:1;
-   let chg=i?((d[i].close-d[i-1].close)/d[i-1].close*100):0;
-   let prevRatio=null;
-   if(i>20){let pb=d.slice(Math.max(0,i-21),i-1).map(x=>x.volume),pm=avg(pb);prevRatio=pm?d[i-1].volume/pm:null}
-   rows.push({...d[i],ratio,chg,note:volPlain(ratio,chg,prevRatio)});
-  }
-  let latest=rows.at(-1), summary=latest.ratio>=1.5&&latest.chg>0?"最近量能明顯增加，股價也同步走高；接下來觀察量能能否維持，以及是否突破壓力。":latest.ratio>=1.5&&latest.chg<0?"成交量明顯增加，但股價下跌；先留意賣壓是否持續，以及近端支撐能不能守住。":latest.ratio<.8?"最近成交量偏低，市場交易降溫；先觀察量是否重新回來。":"目前量能沒有特別極端，搭配支撐、壓力與股價方向一起看即可。";
-  box.innerHTML=`<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h2 style="margin:0">📊 ${code} ${stockName(code)||""}｜最近交易量</h2><button type="button" onclick="document.getElementById('volumeDetail').style.display='none'" style="border:0;background:#f0f2f5;border-radius:9px;padding:7px 10px">收起</button></div><div style="overflow-x:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;min-width:520px;font-size:13px"><thead><tr><th style="text-align:left;padding:8px;border-bottom:1px solid #ddd">日期</th><th style="text-align:right;padding:8px;border-bottom:1px solid #ddd">收盤價</th><th style="text-align:right;padding:8px;border-bottom:1px solid #ddd">成交量</th><th style="text-align:left;padding:8px;border-bottom:1px solid #ddd">我們先怎麼看</th></tr></thead><tbody>${rows.map(r=>`<tr><td style="padding:9px 8px;border-bottom:1px solid #eee">${String(r.date).slice(5).replace('-','/')}</td><td style="text-align:right;padding:9px 8px;border-bottom:1px solid #eee">${fmt(r.close)}</td><td style="text-align:right;padding:9px 8px;border-bottom:1px solid #eee"><b>${Math.round(r.volume/1000).toLocaleString()}張</b></td><td style="padding:9px 8px;border-bottom:1px solid #eee">${r.note}</td></tr>`).join('')}</tbody></table></div><div class="ex" style="margin-top:12px"><b>💡 白話解讀</b><br>${summary}</div></div>`;
-  box.scrollIntoView({behavior:"smooth",block:"nearest"});
- }catch(e){box.innerHTML=`<div class="ex">⚠️ 明細讀取失敗：${e.message}</div>`}
-}
-function renderVolumeRadar(out,fromCache=false){
- let state=$("volumeRadarState"),box=$("volumeRadarList");
- if(!out.length){box.innerHTML='<div class="peer"><b>今天沒有明顯異常量</b><small>熱門族群＋自選股暫時沒有特別突出的量能變化。</small></div>';state.textContent="掃描完成";return}
- box.innerHTML=out.map((x,i)=>`<button type="button" class="peer" onclick="showVolumeDetail('${x.code}')" style="text-align:left;cursor:pointer;font:inherit;color:inherit"><b>${i+1}. ${x.code} ${x.name||""}</b><small>${x.icon} ${x.level}｜${x.theme||radarTheme(x.code)}｜股價 ${x.chg>=0?"+":""}${x.chg.toFixed(1)}%<br><b>${x.combo}</b>　› 點我看明細</small></button>`).join("");
- state.textContent=`資料日 ${out[0].date}｜熱門族群＋自選股 Top ${out.length}${fromCache?"｜⚡ 已使用快取":""}`;
-}
-async function runVolumeRadar(force=false){
- let btn=$("volumeRadarBtn"),state=$("volumeRadarState");
- if(!force){let cached=getVolumeRadarCache();if(cached?.items?.length){renderVolumeRadar(cached.items,true);btn.textContent="重新掃描";return}}
- btn.disabled=true;btn.textContent="讀取中…";
- state.textContent=force?"☁️ 正在請 Cloudflare 重新整理 Top 10…":"☁️ 正在讀取 Cloudflare 已整理好的 Top 10…";
- try{
-   let url=PROXY+"/radar"+(force?"?refresh=1":"");
-   let r=await fetch(url,{cache:"no-store"}),j=await r.json();
-   if(!r.ok||!j.ok)throw new Error(j.error||j.message||("HTTP "+r.status));
-   let out=(j.items||[]).map(x=>({...x,theme:x.theme||radarTheme(x.code)}));
-   saveVolumeRadarCache(out);renderVolumeRadar(out,!!j.cached);
-   state.textContent=`資料日 ${j.dataDate||out[0]?.date||"-"}｜熱門族群 Top ${out.length}${j.cached?"｜⚡ Cloudflare 快取":"｜☁️ 雲端新掃描"}`;
- }catch(e){
-   let cached=getVolumeRadarCache();
-   if(cached?.items?.length){renderVolumeRadar(cached.items,true);state.textContent="⚠️ 雲端雷達暫時無法更新，先顯示手機快取"}
-   else {state.textContent="⚠️ 雷達讀取失敗："+e.message;$("volumeRadarList").innerHTML='<div class="peer"><b>暫時讀不到雷達</b><small>稍後再按一次重新掃描即可；個股分析不受影響。</small></div>'}
- }finally{btn.disabled=false;btn.textContent="重新掃描"}
-}
-document.addEventListener("DOMContentLoaded",()=>{let b=$("volumeRadarBtn");if(b)b.onclick=()=>runVolumeRadar(true);let c=getVolumeRadarCache();if(c?.items?.length)renderVolumeRadar(c.items,true)});
-
-async function apiTest(){let box=$("apiDiag");box.style.display="block";box.innerHTML="⏳ 正在測試 Cloudflare Worker、2330、6217、NVDA…";let lines=[];try{let r=await fetch(PROXY+"/health"),j=await r.json();lines.push(r.ok&&j.ok?"☁️ Worker：✅ 正常":"❌ Worker：連線異常")}catch(e){lines.push("❌ Worker："+e.message)}for(let [ds,id,label] of [["TaiwanStockPrice","2330","2330 台積電"],["TaiwanStockPrice","6217","6217 中探針"],["USStockPrice","NVDA","NVDA"]]){try{let d=await fm(ds,id,isoDaysAgo(20));lines.push(`✅ ${label}：取得 ${d.length} 筆${d.length?"，最新 "+d.at(-1).date:""}`)}catch(e){lines.push(`❌ ${label}：${e.message}`)}}box.innerHTML=lines.join("<br>")+"<br><small>V6.10 不再由手機逐檔掃描量價雷達；Top 10 改由 Cloudflare 統一計算與快取。</small>"}
+async function apiTest(){let box=$("apiDiag");box.style.display="block";box.innerHTML="⏳ 正在測試 Cloudflare Worker、2330、6217、NVDA…";let lines=[];try{let r=await fetch(PROXY+"/health"),j=await r.json();lines.push(r.ok&&j.ok?"☁️ Worker：✅ 正常":"❌ Worker：連線異常")}catch(e){lines.push("❌ Worker："+e.message)}for(let [ds,id,label] of [["TaiwanStockPrice","2330","2330 台積電"],["TaiwanStockPrice","6217","6217 中探針"],["USStockPrice","NVDA","NVDA"]]){try{let d=await fm(ds,id,isoDaysAgo(20));lines.push(`✅ ${label}：取得 ${d.length} 筆${d.length?"，最新 "+d.at(-1).date:""}`)}catch(e){lines.push(`❌ ${label}：${e.message}`)}}box.innerHTML=lines.join("<br>")+"<br><small>V6.11 量價雷達由 Cloudflare 一次掃描後拆成爆量 Top 10 與縮量 Top 10，手機只讀快取結果。</small>"}
 $("testApi").onclick=apiTest;
 function msg(t,c=""){let s=$("status");s.style.display="block";s.className="status "+c;s.innerHTML=t}
 async function analyze(){let code=$("code").value.trim();if(!/^\d{4,6}$/.test(code)){msg("請輸入股票代碼，例如 2330 或 6217。","warn");return}msg("⏳ 正在自動辨識上市／上櫃並抓取歷史行情…");$("result").style.display="none";$("go").disabled=true;

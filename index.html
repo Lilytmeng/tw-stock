@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.8.2 單一價位版</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.9.1 極簡量價雷達版</title>
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#182235;--mut:#6d788a;--line:#e3e8f0;--g:#108655;--g2:#e9f8f0;--y:#b57910;--y2:#fff5d8;--r:#d43c3c;--r2:#fff0f0;--b:#376bdc;--b2:#edf3ff;--p:#7650c9;--p2:#f3eeff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;color:var(--ink)}.wrap{max-width:1120px;margin:auto;padding:18px 14px 60px}.hero{background:linear-gradient(135deg,#172238,#315083);color:#fff;border-radius:26px;padding:27px;box-shadow:0 14px 34px #1d2b4620}.hero h1{margin:0 0 8px;font-size:29px}.hero p{margin:0;line-height:1.7;color:#dfe8fa}.search{display:flex;gap:10px;margin-top:18px}.search input{flex:1;min-width:0;border:0;border-radius:14px;padding:15px;font-size:18px}.search button{border:0;border-radius:14px;padding:0 24px;font-weight:900;cursor:pointer}.chips,.tags{display:flex;gap:8px;flex-wrap:wrap}.chips{margin-top:12px}.chip{background:#ffffff12;color:white;border:1px solid #ffffff40;border-radius:999px;padding:7px 11px;cursor:pointer}.status{display:none;margin:14px 0;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:#fff;line-height:1.65}.ok{background:#edf9f2;color:#11663f;border-color:#bfe6cf}.warn{background:#fff8db;color:#795b00;border-color:#f2d46c}.head{display:flex;justify-content:space-between;align-items:end;margin:22px 2px 12px}.name{font-size:26px;font-weight:950}.price{font-size:31px;font-weight:950;text-align:right}.sub{font-size:12px;color:var(--mut);margin-top:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px #1b2a4810}.full{grid-column:1/-1}.card h2{font-size:17px;margin:0 0 12px}.g{border-top:5px solid var(--g)}.y{border-top:5px solid #dfa228}.r{border-top:5px solid var(--r)}.b{border-top:5px solid var(--b)}.p{border-top:5px solid var(--p)}.big{font-size:28px;font-weight:950;margin:4px 0 10px}.green{color:var(--g)}.amber{color:var(--y)}.red{color:var(--r)}.pill,.tag{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}.pg{background:var(--g2);color:var(--g)}.py{background:var(--y2);color:var(--y)}.pr{background:var(--r2);color:var(--r)}.pb{background:var(--b2);color:var(--b)}.pp{background:var(--p2);color:var(--p)}.rows{border-top:1px solid var(--line);margin-top:12px;padding-top:7px}.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:14px}.row span{color:var(--mut)}.ex{margin-top:10px;padding:11px 12px;border-radius:12px;background:#f7f9fc;line-height:1.75;font-size:14px}.peergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.peer{padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#fafbfe}.peer b{display:block}.peer small{color:var(--mut);line-height:1.5}.flag{font-size:16px;margin-right:5px}.score{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.check{padding:8px 10px;border-radius:10px;background:#f1f3f7;font-size:13px}.yes{background:var(--g2);color:var(--g)}.no{background:var(--r2);color:var(--r)}.summary{font-size:16px;line-height:1.9}.meter{height:16px;border-radius:99px;background:linear-gradient(90deg,#bcebd2 0 38%,#f7dfa4 38% 62%,#ffc6c6 62%);position:relative;margin:30px 8px 40px}.needle{position:absolute;top:-8px;width:4px;height:32px;background:#172033;border-radius:3px;transform:translateX(-50%)}.needle:after{content:'現價';position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900}.levels{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:12px}.levels b{display:block;font-size:13px}.map{display:flex;align-items:center;gap:8px;overflow:auto;padding:12px 0}.node{min-width:130px;padding:12px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);text-align:center;font-size:13px}.arrow{font-size:22px;color:#9aa5b6}.note{font-size:12px;color:var(--mut);line-height:1.7;margin-top:16px}canvas{width:100%;height:230px;background:#fbfcfe;border-radius:12px}
@@ -14,7 +14,7 @@
 <button class="wadd" id="addWatchCode">＋ 加入</button>
 <button class="wadd" id="addCurrentWatch" style="background:#475467">⭐ 加入目前股票</button>
 </div></div><div class="watchtablewrap"><table class="watchtable"><thead><tr><th>我的自選股</th><th>現價</th><th>位置燈號</th><th>近端支撐</th><th>距支撐</th><th>次近端支撐</th><th>第一壓力</th><th>距壓力</th><th>第二壓力</th><th>壓力強度</th><th>今日變化</th></tr></thead><tbody id="watchRows"></tbody></table></div><div class="sub" style="margin-top:8px">手機可左右滑動。🟢靠近支撐／🟡整理區／🔴靠近壓力／🚀突破觀察／⚠️跌破支撐。距離百分比以最新收盤價計算。</div></section>
-<section class="hero"><h1>📈 台股全景小幫手 V6.8.2 單一價位版</h1><p>V6.8.2 保留價格共振引擎，但畫面統一只顯示一個代表價位：從共振區內優先選擇權重最高的實際交易價；原有題材、美股風向與供應鏈完整保留。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button><button class="chip" data-code="2221">2221 大甲</button></div></section>
+<section class="hero"><h1>📈 台股全景小幫手 V6.9.1 極簡量價雷達版</h1><p>V6.9.1：量價異常雷達只顯示前10名與一句白話判讀；想看最近交易量變化，再點股票展開詳細明細。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button><button class="chip" data-code="2221">2221 大甲</button></div></section>
 <section class="card full" style="margin-top:14px;border-top:5px solid #172238">
 <h2>📡 今日看盤雷達</h2>
 <div class="ex">先看「昨夜美股 → 台股族群」，再決定今天要深入查哪一檔。資料改由 Cloudflare 安全代理取得，不需要在手機或網頁輸入 FinMind Token。</div>
@@ -25,6 +25,15 @@
 <div class="card p"><h2>🇹🇼 台股族群雷達</h2><div id="twRadar" class="peergrid"></div></div>
 </div>
 <div class="card g" style="margin-top:13px"><h2>🔥 今天先觀察哪些族群？</h2><div id="hotRadar" class="summary">按「更新今日雷達」後顯示。</div></div>
+</section>
+<section class="card full" style="margin-top:14px;border-top:5px solid #7c3aed">
+<h2>⚡ 量價異常雷達｜前10名</h2>
+<div class="ex">先看最值得注意的前10名：股票、量能狀況、漲跌與一句白話判讀。想知道最近幾天的成交量怎麼變，再點該股票看明細。</div>
+<div style="margin-top:10px"><button id="volumeRadarBtn" type="button" style="border:0;border-radius:12px;padding:11px 16px;font-weight:900;background:#7c3aed;color:#fff;cursor:pointer">掃描量價異常</button></div>
+<div id="volumeRadarState" class="sub" style="margin-top:8px"></div>
+<div id="volumeRadarList" class="peergrid" style="margin-top:12px"><div class="peer"><b>尚未掃描</b><small>按上方按鈕後顯示前10名</small></div></div>
+<div class="sub" style="margin-top:8px">主畫面刻意保持簡單；20日均量與量比仍在背景計算。點股票後才顯示最近7個交易日明細。</div>
+<div id="volumeDetail" style="display:none;margin-top:14px"></div>
 </section>
 <details style="margin:14px 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px 15px">
 <summary style="cursor:pointer;font-weight:900">☁️ API 連線狀態</summary>
@@ -53,7 +62,7 @@
 <section class="card full"><h2>🔗 13. 題材供應鏈地圖</h2><div class="map" id="supply"></div><div class="sub">用來理解誰是上游、誰是需求端、台股在哪個位置；不是買進順序。</div></section>
 <section class="card full"><h2>📉 最近 60 個交易日</h2><canvas id="chart" width="1000" height="230"></canvas><div class="sub">藍線＝收盤價；綠色虛線＝近端支撐；紅色虛線＝第一壓力。</div></section>
 <section class="card full"><h2>💡 白話總結</h2><div class="summary" id="summary"></div></section>
-</div><div class="note">個人研究工具，不是買賣建議。V6.8.2 支撐壓力採「價格共振＋均線＋成交量」，畫面只顯示單一代表價；產業資料可由 TaiwanStockInfo 自動建立，同業、美股風向與供應鏈框架不再只依賴少量內建個股。大盤／同族群的即時比較若瀏覽器資料來源受限，會清楚顯示「待接即時資料」，不會用假數字代替。</div></main></div>
+</div><div class="note">個人研究工具，不是買賣建議。V6.9 支撐壓力採「價格共振＋均線＋成交量」，畫面只顯示單一代表價；產業資料可由 TaiwanStockInfo 自動建立，同業、美股風向與供應鏈框架不再只依賴少量內建個股。大盤／同族群的即時比較若瀏覽器資料來源受限，會清楚顯示「待接即時資料」，不會用假數字代替。</div></main></div>
 <script>
 const $=x=>document.getElementById(x),avg=a=>a.reduce((s,x)=>s+x,0)/a.length,fmt=n=>Number(n).toLocaleString("zh-TW",{maximumFractionDigits:2}),num=s=>Number(String(s).replaceAll(",",""));
 const KB={
@@ -207,7 +216,76 @@ $("rs").textContent="待接大盤即時資料";$("rsEx").innerHTML=`V4 已把位
 $("sync").textContent="待接族群即時資料";$("syncEx").textContent="目前先列出同族群搭配股。下一階段會自動抓它們當日漲跌，算出「幾檔同步上漲／下跌」。";
 let c1=l.close>(r1.rep??r1.mid),c2=vr>=1.2,c3=l.close>(r1.rep??r1.mid),c4=false,checks=[["價格站上壓力",c1],["成交量 ≥ 20日均量1.2倍",c2],["收盤確認站上",c3],["族群同步轉強",c4]],score=checks.filter(x=>x[1]).length;$("breakScore").textContent=`目前 ${score} / 4`;$("checks").innerHTML=checks.map(x=>`<span class="check ${x[1]?"yes":"no"}">${x[1]?"✓":"○"} ${x[0]}${x[0].includes("族群")?"（待接）":""}</span>`).join("");
 let rv1=r1.rep??r1.mid,rv2=r2.rep??r2.mid;let pos=l.close<nl?"已跌到近端支撐下方":Math.abs(l.close-nl)/nl<=.01?"正在近端支撐附近":l.close<rv1?"位在支撐與第一壓力之間":Math.abs(l.close-rv1)/rv1<=.01?"正在挑戰第一壓力":l.close<rv2?"已越過第一壓力":"已靠近第二壓力";$("summary").innerHTML=`① <b>現在：</b>${pos}。<br>② <b>往下：</b>先看 <span class="green"><b>${fmt(nm)}</b></span>，再看 <span class="amber"><b>${fmt(ds.second.v)}</b></span>。<br>③ <b>往上：</b>先看 <span class="red"><b>${fmt(rv1)}</b></span>。突破時不要只看價格，還要一起看量能、族群與大盤。<br>④ <b>美股：</b>看上方列出的美股是一起轉強，還是只有台股單兵上漲；把它當「風向確認」，不要當隔日漲跌保證。`;draw(a,nm,rv1);$("result").style.display="block";liveComparisons(code,ch).catch(()=>{})}
-async function apiTest(){let box=$("apiDiag");box.style.display="block";box.innerHTML="⏳ 正在測試 Cloudflare Worker、2330、6217、NVDA…";let lines=[];try{let r=await fetch(PROXY+"/health"),j=await r.json();lines.push(r.ok&&j.ok?"☁️ Worker：✅ 正常":"❌ Worker：連線異常")}catch(e){lines.push("❌ Worker："+e.message)}for(let [ds,id,label] of [["TaiwanStockPrice","2330","2330 台積電"],["TaiwanStockPrice","6217","6217 中探針"],["USStockPrice","NVDA","NVDA"]]){try{let d=await fm(ds,id,isoDaysAgo(20));lines.push(`✅ ${label}：取得 ${d.length} 筆${d.length?"，最新 "+d.at(-1).date:""}`)}catch(e){lines.push(`❌ ${label}：${e.message}`)}}box.innerHTML=lines.join("<br>")+"<br><small>V6.8.2 不再從瀏覽器直接連 FinMind，也不需要在網站儲存 Token。</small>"}
+
+const VOLUME_RADAR_POOL=["2330","2317","2454","2382","3231","6669","3017","3324","2408","2221","6223","6510","3661","3443","3034","2379","3711","6683"];
+function volumeLabel(ratio,chg){
+ let level,icon;
+ if(ratio>=3){level="極端爆量";icon="🔥🔥"}
+ else if(ratio>=2){level="突然爆量";icon="🔥🔥"}
+ else if(ratio>=1.5){level="明顯放量";icon="🔥"}
+ else if(ratio>=1.2){level="量增加";icon="👀"}
+ else if(ratio<0.5){level="明顯縮量";icon="😴"}
+ else if(ratio<0.8){level="量減少";icon="💤"}
+ else {level="普通";icon="⚪"}
+ let combo=chg>=2&&ratio>=1.5?"量增＋價漲":chg<=-2&&ratio>=1.5?"量增＋價跌":chg>0&&ratio<0.8?"上漲但量縮":chg<0&&ratio<0.8?"下跌且量縮":chg>0?"股價上漲":"股價下跌";
+ return {level,icon,combo};
+}
+function volPlain(ratio,chg,prevRatio){
+ if(ratio>=2.5&&chg>=2)return "🔥🔥 再放大＋大漲";
+ if(ratio>=2&&chg>=2)return "🔥 突然爆量＋大漲";
+ if(ratio>=2&&chg<0)return "⚠️ 爆量但下跌";
+ if(ratio>=1.5&&prevRatio!=null&&ratio>prevRatio*1.15)return "🔥 又增加";
+ if(ratio>=1.5)return "👀 量還在";
+ if(ratio>=1.2)return "👀 稍微增加";
+ if(ratio<.5)return "😴 明顯縮量";
+ if(ratio<.8)return "💤 量減少";
+ return "普通";
+}
+async function volumeRadarOne(code){
+ let d=await fm("TaiwanStockPrice",code,isoDaysAgo(90));
+ if(!d||d.length<22)return null;
+ d=d.map(x=>({date:x.date,volume:Number(x.Trading_Volume??x.trading_volume??0),close:Number(x.close)})).filter(x=>Number.isFinite(x.volume)&&Number.isFinite(x.close)&&x.volume>0);
+ if(d.length<22)return null;
+ let last=d.at(-1),prev=d.at(-2),base=d.slice(-21,-1).map(x=>x.volume),mean=avg(base),ratio=mean?last.volume/mean:null;
+ if(!Number.isFinite(ratio))return null;
+ let chg=(last.close-prev.close)/prev.close*100, lab=volumeLabel(ratio,chg);
+ let anomaly=ratio>=1?ratio:(1/Math.max(ratio,.01));
+ return {code,name:stockName(code),date:last.date,ratio,chg,volume:last.volume,avg20:mean,anomaly,...lab};
+}
+async function showVolumeDetail(code){
+ let box=$("volumeDetail"); box.style.display="block"; box.innerHTML='<div class="ex">⏳ 正在讀取最近成交量…</div>';
+ try{
+  let d=await fm("TaiwanStockPrice",code,isoDaysAgo(90));
+  d=d.map(x=>({date:x.date,volume:Number(x.Trading_Volume??x.trading_volume??0),close:Number(x.close)})).filter(x=>Number.isFinite(x.volume)&&Number.isFinite(x.close)&&x.volume>0);
+  let rows=[];
+  for(let i=Math.max(20,d.length-7);i<d.length;i++){
+   let base=d.slice(Math.max(0,i-20),i).map(x=>x.volume),mean=avg(base),ratio=mean?d[i].volume/mean:1;
+   let chg=i?((d[i].close-d[i-1].close)/d[i-1].close*100):0;
+   let prevRatio=null;
+   if(i>20){let pb=d.slice(Math.max(0,i-21),i-1).map(x=>x.volume),pm=avg(pb);prevRatio=pm?d[i-1].volume/pm:null}
+   rows.push({...d[i],ratio,chg,note:volPlain(ratio,chg,prevRatio)});
+  }
+  let latest=rows.at(-1), summary=latest.ratio>=1.5&&latest.chg>0?"最近量能明顯增加，股價也同步走高；接下來觀察量能能否維持，以及是否突破壓力。":latest.ratio>=1.5&&latest.chg<0?"成交量明顯增加，但股價下跌；先留意賣壓是否持續，以及近端支撐能不能守住。":latest.ratio<.8?"最近成交量偏低，市場交易降溫；先觀察量是否重新回來。":"目前量能沒有特別極端，搭配支撐、壓力與股價方向一起看即可。";
+  box.innerHTML=`<div class="card" style="padding:14px"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><h2 style="margin:0">📊 ${code} ${stockName(code)||""}｜最近交易量</h2><button type="button" onclick="document.getElementById('volumeDetail').style.display='none'" style="border:0;background:#f0f2f5;border-radius:9px;padding:7px 10px">收起</button></div><div style="overflow-x:auto;margin-top:10px"><table style="width:100%;border-collapse:collapse;min-width:520px;font-size:13px"><thead><tr><th style="text-align:left;padding:8px;border-bottom:1px solid #ddd">日期</th><th style="text-align:right;padding:8px;border-bottom:1px solid #ddd">收盤價</th><th style="text-align:right;padding:8px;border-bottom:1px solid #ddd">成交量</th><th style="text-align:left;padding:8px;border-bottom:1px solid #ddd">我們先怎麼看</th></tr></thead><tbody>${rows.map(r=>`<tr><td style="padding:9px 8px;border-bottom:1px solid #eee">${String(r.date).slice(5).replace('-','/')}</td><td style="text-align:right;padding:9px 8px;border-bottom:1px solid #eee">${fmt(r.close)}</td><td style="text-align:right;padding:9px 8px;border-bottom:1px solid #eee"><b>${Math.round(r.volume/1000).toLocaleString()}張</b></td><td style="padding:9px 8px;border-bottom:1px solid #eee">${r.note}</td></tr>`).join('')}</tbody></table></div><div class="ex" style="margin-top:12px"><b>💡 白話解讀</b><br>${summary}</div></div>`;
+  box.scrollIntoView({behavior:"smooth",block:"nearest"});
+ }catch(e){box.innerHTML=`<div class="ex">⚠️ 明細讀取失敗：${e.message}</div>`}
+}
+async function runVolumeRadar(){
+ let btn=$("volumeRadarBtn"),state=$("volumeRadarState"),box=$("volumeRadarList");
+ btn.disabled=true;btn.textContent="掃描中…";state.textContent="正在找量能最異常的股票…";
+ let pool=[...new Set([...list(),...VOLUME_RADAR_POOL])].slice(0,24),out=[];
+ for(let i=0;i<pool.length;i+=6){let batch=await Promise.all(pool.slice(i,i+6).map(c=>volumeRadarOne(c).catch(()=>null)));out.push(...batch.filter(Boolean));}
+ out=out.filter(x=>x.ratio>=1.2||x.ratio<.8).sort((a,b)=>b.anomaly-a.anomaly).slice(0,10);
+ if(!out.length){box.innerHTML='<div class="peer"><b>今天沒有明顯異常量</b><small>掃描範圍內暫時沒有特別突出的量能變化。</small></div>';state.textContent="掃描完成";}
+ else{
+   box.innerHTML=out.map((x,i)=>`<button type="button" class="peer" onclick="showVolumeDetail('${x.code}')" style="text-align:left;cursor:pointer;font:inherit;color:inherit"><b>${i+1}. ${x.code} ${x.name||""}</b><small>${x.icon} ${x.level}｜股價 ${x.chg>=0?"+":""}${x.chg.toFixed(1)}%<br><b>${x.combo}</b>　› 點我看明細</small></button>`).join("");
+   state.textContent=`資料日 ${out[0].date}｜只顯示異常前 ${out.length} 名`;
+ }
+ btn.disabled=false;btn.textContent="重新掃描";
+}
+document.addEventListener("DOMContentLoaded",()=>{let b=$("volumeRadarBtn");if(b)b.onclick=runVolumeRadar});
+
+async function apiTest(){let box=$("apiDiag");box.style.display="block";box.innerHTML="⏳ 正在測試 Cloudflare Worker、2330、6217、NVDA…";let lines=[];try{let r=await fetch(PROXY+"/health"),j=await r.json();lines.push(r.ok&&j.ok?"☁️ Worker：✅ 正常":"❌ Worker：連線異常")}catch(e){lines.push("❌ Worker："+e.message)}for(let [ds,id,label] of [["TaiwanStockPrice","2330","2330 台積電"],["TaiwanStockPrice","6217","6217 中探針"],["USStockPrice","NVDA","NVDA"]]){try{let d=await fm(ds,id,isoDaysAgo(20));lines.push(`✅ ${label}：取得 ${d.length} 筆${d.length?"，最新 "+d.at(-1).date:""}`)}catch(e){lines.push(`❌ ${label}：${e.message}`)}}box.innerHTML=lines.join("<br>")+"<br><small>V6.9.1 不再從瀏覽器直接連 FinMind，也不需要在網站儲存 Token。</small>"}
 $("testApi").onclick=apiTest;
 function msg(t,c=""){let s=$("status");s.style.display="block";s.className="status "+c;s.innerHTML=t}
 async function analyze(){let code=$("code").value.trim();if(!/^\d{4,6}$/.test(code)){msg("請輸入股票代碼，例如 2330 或 6217。","warn");return}msg("⏳ 正在自動辨識上市／上櫃並抓取歷史行情…");$("result").style.display="none";$("go").disabled=true;

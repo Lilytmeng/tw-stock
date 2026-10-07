@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.16 買賣確認燈版</title>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>台股全景小幫手 V6.17 買賣確認燈版</title>
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#182235;--mut:#6d788a;--line:#e3e8f0;--g:#108655;--g2:#e9f8f0;--y:#b57910;--y2:#fff5d8;--r:#d43c3c;--r2:#fff0f0;--b:#376bdc;--b2:#edf3ff;--p:#7650c9;--p2:#f3eeff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Segoe UI",sans-serif;color:var(--ink)}.wrap{max-width:1120px;margin:auto;padding:18px 14px 60px}.hero{background:linear-gradient(135deg,#172238,#315083);color:#fff;border-radius:26px;padding:27px;box-shadow:0 14px 34px #1d2b4620}.hero h1{margin:0 0 8px;font-size:29px}.hero p{margin:0;line-height:1.7;color:#dfe8fa}.search{display:flex;gap:10px;margin-top:18px}.search input{flex:1;min-width:0;border:0;border-radius:14px;padding:15px;font-size:18px}.search button{border:0;border-radius:14px;padding:0 24px;font-weight:900;cursor:pointer}.chips,.tags{display:flex;gap:8px;flex-wrap:wrap}.chips{margin-top:12px}.chip{background:#ffffff12;color:white;border:1px solid #ffffff40;border-radius:999px;padding:7px 11px;cursor:pointer}.status{display:none;margin:14px 0;padding:13px 15px;border-radius:14px;border:1px solid var(--line);background:#fff;line-height:1.65}.ok{background:#edf9f2;color:#11663f;border-color:#bfe6cf}.warn{background:#fff8db;color:#795b00;border-color:#f2d46c}.head{display:flex;justify-content:space-between;align-items:end;margin:22px 2px 12px}.name{font-size:26px;font-weight:950}.price{font-size:31px;font-weight:950;text-align:right}.sub{font-size:12px;color:var(--mut);margin-top:4px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 5px 18px #1b2a4810}.full{grid-column:1/-1}.card h2{font-size:17px;margin:0 0 12px}.g{border-top:5px solid var(--g)}.y{border-top:5px solid #dfa228}.r{border-top:5px solid var(--r)}.b{border-top:5px solid var(--b)}.p{border-top:5px solid var(--p)}.big{font-size:28px;font-weight:950;margin:4px 0 10px}.green{color:var(--g)}.amber{color:var(--y)}.red{color:var(--r)}.pill,.tag{display:inline-block;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:800}.pg{background:var(--g2);color:var(--g)}.py{background:var(--y2);color:var(--y)}.pr{background:var(--r2);color:var(--r)}.pb{background:var(--b2);color:var(--b)}.pp{background:var(--p2);color:var(--p)}.rows{border-top:1px solid var(--line);margin-top:12px;padding-top:7px}.row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:14px}.row span{color:var(--mut)}.ex{margin-top:10px;padding:11px 12px;border-radius:12px;background:#f7f9fc;line-height:1.75;font-size:14px}.peergrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.peer{padding:11px 12px;border:1px solid var(--line);border-radius:13px;background:#fafbfe}.peer b{display:block}.peer small{color:var(--mut);line-height:1.5}.flag{font-size:16px;margin-right:5px}.score{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.check{padding:8px 10px;border-radius:10px;background:#f1f3f7;font-size:13px}.yes{background:var(--g2);color:var(--g)}.no{background:var(--r2);color:var(--r)}.summary{font-size:16px;line-height:1.9}.meter{height:16px;border-radius:99px;background:linear-gradient(90deg,#bcebd2 0 38%,#f7dfa4 38% 62%,#ffc6c6 62%);position:relative;margin:30px 8px 40px}.needle{position:absolute;top:-8px;width:4px;height:32px;background:#172033;border-radius:3px;transform:translateX(-50%)}.needle:after{content:'現價';position:absolute;top:34px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:900}.levels{display:grid;grid-template-columns:repeat(5,1fr);text-align:center;font-size:12px}.levels b{display:block;font-size:13px}.map{display:flex;align-items:center;gap:8px;overflow:auto;padding:12px 0}.node{min-width:130px;padding:12px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);text-align:center;font-size:13px}.arrow{font-size:22px;color:#9aa5b6}.note{font-size:12px;color:var(--mut);line-height:1.7;margin-top:16px}canvas{width:100%;height:230px;background:#fbfcfe;border-radius:12px}
@@ -14,7 +14,7 @@
 <button class="wadd" id="addWatchCode">＋ 加入</button>
 <button class="wadd" id="addCurrentWatch" style="background:#475467">⭐ 加入目前股票</button>
 </div></div><div class="watchtablewrap"><table class="watchtable"><thead><tr><th>我的自選股</th><th>現價</th><th>位置燈號</th><th>第一買點／近端支撐</th><th>距支撐</th><th>第二買點／第二支撐</th><th>第一賣壓</th><th>距賣壓</th><th>第二賣壓</th><th>壓力強度</th><th>今日變化</th></tr></thead><tbody id="watchRows"></tbody></table></div><div class="sub" style="margin-top:8px">手機可左右滑動。🟢靠近支撐／🟡整理區／🔴靠近壓力／🚀突破觀察／⚠️跌破支撐。距離百分比以最新收盤價計算。</div></section>
-<section class="hero"><h1>📈 台股全景小幫手 V6.16 買賣確認燈版</h1><p>V6.16：保留買點／賣壓區間，新增「買賣確認燈」；用最新完整交易日的高低收與量能，判斷支撐測試、支撐確認、賣壓測試與帶量突破。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button><button class="chip" data-code="2221">2221 大甲</button></div></section>
+<section class="hero"><h1>📈 台股全景小幫手 V6.17 買賣確認燈版</h1><p>V6.17：保留買點／賣壓區間，新增「買賣確認燈」；用最新完整交易日的高低收與量能，判斷支撐測試、支撐確認、賣壓測試與帶量突破。</p><div class="search"><input id="code" value="2330" maxlength="6" inputmode="numeric" placeholder="例如 2330"><button id="go">開始分析</button></div><div class="chips"><button class="chip" data-code="2330">2330 台積電</button><button class="chip" data-code="2317">2317 鴻海</button><button class="chip" data-code="2454">2454 聯發科</button><button class="chip" data-code="2382">2382 廣達</button><button class="chip" data-code="6217">6217 中探針</button><button class="chip" data-code="2221">2221 大甲</button></div></section>
 <section class="card full" style="margin-top:14px;border-top:5px solid #172238">
 <h2>📡 今日看盤雷達</h2>
 <div class="ex">先看「昨夜美股 → 台股族群」，再決定今天要深入查哪一檔。資料改由 Cloudflare 安全代理取得，不需要在手機或網頁輸入 FinMind Token。</div>
@@ -176,38 +176,68 @@ function knowledge(code){let k=KB[code];if(k){renderKnowledge(k);return k}$("the
 
 
 function priceResonance(a){
- let cur=a.at(-1).close,recent=a.slice(-120),vols=recent.map(x=>x.volume||0),vavg=avg(vols.filter(Number.isFinite))||1;
+ let cur=a.at(-1).close,recent=a.slice(-160),vols=recent.map(x=>x.volume||0),vavg=avg(vols.filter(Number.isFinite))||1;
  let cl=a.map(x=>x.close),m5=avg(cl.slice(-5)),m20=avg(cl.slice(-20)),m60=avg(cl.slice(-60));
  let supportPts=[],resistancePts=[]; const gap=.0035;
- function add(arr,v,label,w=1){if(Number.isFinite(v)&&v>0)arr.push({v,label,w})}
- for(let i=Math.max(0,recent.length-90);i<recent.length;i++){
-   let x=recent[i],age=recent.length-1-i,rec=age<=2?1.35:age<=7?1.25:age<=20?1.08:.78,vw=Math.min(1.8,Math.max(.70,(x.volume||vavg)/vavg));
-   if(x.low<cur*(1-gap))add(supportPts,x.low,`${x.date}低點`,1.65*rec*vw);
-   if(x.high>cur*(1+gap))add(resistancePts,x.high,`${x.date}高點`,1.65*rec*vw);
-   if(age>0&&x.close<cur*(1-gap))add(supportPts,x.close,`${x.date}收盤`,1.0*rec*vw);
-   if(age>0&&x.open<cur*(1-gap))add(supportPts,x.open,`${x.date}開盤`,.72*rec*vw);
-   if(x.close>cur*(1+gap))add(resistancePts,x.close,`${x.date}收盤`,.9*rec*vw);
-   if(x.open>cur*(1+gap))add(resistancePts,x.open,`${x.date}開盤`,.68*rec*vw);
+ function add(arr,v,label,w=1,type="price"){if(Number.isFinite(v)&&v>0)arr.push({v,label,w,type})}
+ function isSwingHigh(i){let x=recent[i];return i>=2&&i<recent.length-2&&x.high>=recent[i-1].high&&x.high>=recent[i-2].high&&x.high>=recent[i+1].high&&x.high>=recent[i+2].high}
+ function isSwingLow(i){let x=recent[i];return i>=2&&i<recent.length-2&&x.low<=recent[i-1].low&&x.low<=recent[i-2].low&&x.low<=recent[i+1].low&&x.low<=recent[i+2].low}
+ // 一般價格結構只當輔助；主要結構由突破回測、前高轉支撐、爆量K、缺口、波段轉折決定。
+ for(let i=Math.max(0,recent.length-100);i<recent.length;i++){
+   let x=recent[i],age=recent.length-1-i,rec=age<=2?1.25:age<=7?1.18:age<=25?1.05:.75,vw=Math.min(1.8,Math.max(.70,(x.volume||vavg)/vavg));
+   if(x.low<cur*(1-gap))add(supportPts,x.low,`${x.date}低點`,.75*rec*vw,"price");
+   if(x.high>cur*(1+gap))add(resistancePts,x.high,`${x.date}高點`,.82*rec*vw,"price");
  }
+ // 波段高低點。
  for(let i=2;i<recent.length-2;i++){
    let x=recent[i];
-   if(x.low<=recent[i-1].low&&x.low<=recent[i-2].low&&x.low<=recent[i+1].low&&x.low<=recent[i+2].low&&x.low<cur*(1-gap))add(supportPts,x.low,`${x.date}轉折低點`,3.4);
-   if(x.high>=recent[i-1].high&&x.high>=recent[i-2].high&&x.high>=recent[i+1].high&&x.high>=recent[i+2].high&&x.high>cur*(1+gap))add(resistancePts,x.high,`${x.date}轉折高點`,3.5);
+   if(isSwingLow(i)&&x.low<cur*(1-gap))add(supportPts,x.low,`${x.date}波段低點`,4.6,"swingLow");
+   if(isSwingHigh(i)&&x.high>cur*(1+gap))add(resistancePts,x.high,`${x.date}波段高點`,4.8,"swingHigh");
  }
- // MA5/20/60 是重要的動態支撐／壓力，季線與月線權重提高。
- [[5,m5,3.0],[20,m20,5.2],[60,m60,5.8]].forEach(([n,v,w])=>{if(v<cur*(1-gap))add(supportPts,v,`MA${n}`,w);else if(v>cur*(1+gap))add(resistancePts,v,`MA${n}`,w)});
- function cluster(pts){let groups=[],tol=.009;for(let p of pts.sort((a,b)=>a.v-b.v)){let g=groups.find(g=>Math.abs(p.v-g.center)/g.center<=tol);if(g){g.items.push(p);g.center=g.items.reduce((s,z)=>s+z.v*z.w,0)/g.items.reduce((s,z)=>s+z.w,0)}else groups.push({center:p.v,items:[p]})}return groups.map(g=>{let vals=g.items.map(z=>z.v),raw=g.items.reduce((s,z)=>s+z.w,0),ranked=[...g.items].sort((a,b)=>b.w-a.w),ma=ranked.find(z=>String(z.label).startsWith('MA')),actual=ranked.filter(z=>!String(z.label).startsWith('MA')),rep=(ma||actual[0]||ranked[0]||{v:g.center}).v;return{lo:Math.min(...vals),hi:Math.max(...vals),mid:g.center,rep,score:Math.min(100,Math.round(raw*3.1+g.items.length*2.2)),labels:[...new Set(ranked.map(z=>z.label))],hits:g.items.length,hasMA:!!ma}}).filter(z=>z.hits>=1)}
+ // 前高轉支撐 + 突破後回測：先找舊波段高點，之後若有效突破，再回測到舊高附近且守住，就提升為主要支撐。
+ for(let i=2;i<recent.length-8;i++) if(isSwingHigh(i)){
+   let lvl=recent[i].high, breakout=-1;
+   for(let j=i+1;j<recent.length;j++){if(recent[j].close>lvl*1.006){breakout=j;break}}
+   if(breakout>0 && lvl<cur*(1-gap)){
+     let tests=recent.slice(breakout+1).filter(x=>x.low<=lvl*1.012&&x.high>=lvl*.988&&x.close>=lvl*.992);
+     if(tests.length){add(supportPts,lvl,`${recent[i].date}前高轉支撐`,6.6,"flip");let t=tests.at(-1);add(supportPts,(t.low+t.close)/2,`${t.date}突破後回測`,6.0,"retest")}
+   }
+ }
+ // 爆量K：相對前20日均量 >=1.5 倍；紅K低點偏支撐，高點偏賣壓。
+ for(let i=20;i<recent.length;i++){
+   let x=recent[i],base=avg(recent.slice(i-20,i).map(z=>z.volume||0))||1,ratio=(x.volume||0)/base;
+   if(ratio>=1.5){
+     if(x.close>=x.open && x.low<cur*(1-gap))add(supportPts,x.low,`${x.date}爆量K低點`,ratio>=2?6.2:5.2,"volumeK");
+     if(x.high>cur*(1+gap))add(resistancePts,x.high,`${x.date}爆量K高點`,ratio>=2?5.9:4.9,"volumeK");
+   }
+ }
+ // 跳空缺口：上漲缺口上緣/下緣形成支撐；下跌缺口形成上方賣壓。
+ for(let i=1;i<recent.length;i++){
+   let p=recent[i-1],x=recent[i],tol=.002;
+   if(x.low>p.high*(1+tol)){
+     if(p.high<cur*(1-gap))add(supportPts,p.high,`${x.date}缺口上緣`,5.6,"gap");
+     if(x.low<cur*(1-gap))add(supportPts,x.low,`${x.date}缺口下緣`,4.5,"gap");
+   }
+   if(x.high<p.low*(1-tol)){
+     if(x.high>cur*(1+gap))add(resistancePts,x.high,`${x.date}缺口下緣壓力`,5.2,"gap");
+     if(p.low>cur*(1+gap))add(resistancePts,p.low,`${x.date}缺口上緣壓力`,5.7,"gap");
+   }
+ }
+ // 均線保留做共振加分，不再主導核心價。
+ [[5,m5,1.5],[20,m20,2.5],[60,m60,3.0]].forEach(([n,v,w])=>{if(v<cur*(1-gap))add(supportPts,v,`MA${n}`,w,"ma");else if(v>cur*(1+gap))add(resistancePts,v,`MA${n}`,w,"ma")});
+ function cluster(pts){let groups=[],tol=.009;for(let p of pts.sort((a,b)=>a.v-b.v)){let g=groups.find(g=>Math.abs(p.v-g.center)/g.center<=tol);if(g){g.items.push(p);g.center=g.items.reduce((s,z)=>s+z.v*z.w,0)/g.items.reduce((s,z)=>s+z.w,0)}else groups.push({center:p.v,items:[p]})}return groups.map(g=>{let vals=g.items.map(z=>z.v),raw=g.items.reduce((s,z)=>s+z.w,0),ranked=[...g.items].sort((a,b)=>b.w-a.w),struct=ranked.filter(z=>z.type!=="ma"&&z.type!=="price"),rep=(struct[0]||ranked[0]||{v:g.center}).v,types=[...new Set(g.items.map(z=>z.type))];return{lo:Math.min(...vals),hi:Math.max(...vals),mid:g.center,rep,score:Math.min(100,Math.round(raw*3.0+types.length*5+g.items.length*1.5)),labels:[...new Set(ranked.map(z=>z.label))],hits:g.items.length,types,hasMA:types.includes("ma"),structHits:struct.length}})}
  let supports=cluster(supportPts).filter(z=>(z.rep??z.mid)<cur*(1-gap)).map(z=>({...z,dist:(cur-(z.rep??z.mid))/cur}));
- // 買點邏輯：先找離現價最近的有效支撐；MA20/MA60 或多重價格結構可視為有效。
- supports.forEach(z=>{let d=z.dist,struct=z.hits>=2||z.hasMA;z.rankScore=(struct?30:0)+z.score-Math.max(0,d-.08)*220-d*18});
- let validS=supports.filter(z=>z.dist>=gap&&z.dist<=.12&&(z.hasMA||z.hits>=2)).sort((a,b)=>a.dist-b.dist||b.rankScore-a.rankScore);
- let s1=validS[0]||supports.sort((a,b)=>a.dist-b.dist||b.rankScore-a.rankScore)[0];
- let s2=s1?(validS.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.98).sort((a,b)=>a.dist-b.dist||b.rankScore-a.rankScore)[0]||supports.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.98).sort((a,b)=>a.dist-b.dist)[0]):validS[1];
- let resist=cluster(resistancePts).filter(z=>(z.rep??z.mid)>cur*(1+gap)).map(z=>({...z,dist:((z.rep??z.mid)-cur)/cur})).sort((a,b)=>a.dist-b.dist||b.score-a.score);
- // 賣壓邏輯：第一賣壓取最近有效上方結構；第二賣壓取其後下一個有效層，不再跳過較近壓力。
- let validR=resist.filter(z=>z.dist>=gap&&(z.hits>=2||z.hasMA||(z.labels||[]).some(x=>x.includes('轉折高點'))));
- let r1=validR[0]||resist[0];
- let r2=r1?(validR.filter(z=>(z.rep??z.mid)>(r1.rep??r1.mid)*1.012)[0]||resist.filter(z=>(z.rep??z.mid)>(r1.rep??r1.mid)*1.012)[0]):validR[1];
+ // 型態優先：有前高轉支撐/回測/爆量K/缺口/波段低點者優先，再兼顧距離與共振。
+ supports.forEach(z=>{let structural=z.types.some(t=>["flip","retest","volumeK","gap","swingLow"].includes(t));z.rankScore=(structural?55:0)+z.structHits*12+z.score-z.dist*55});
+ let validS=supports.filter(z=>z.dist>=gap&&z.dist<=.15&&(z.structHits>=1||z.hasMA)).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist);
+ let s1=validS[0]||supports.sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0];
+ let s2=s1?(validS.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.975).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0]||supports.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.975).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0]):validS[1];
+ let resist=cluster(resistancePts).filter(z=>(z.rep??z.mid)>cur*(1+gap)).map(z=>({...z,dist:((z.rep??z.mid)-cur)/cur}));
+ resist.forEach(z=>{let structural=z.types.some(t=>["swingHigh","volumeK","gap"].includes(t));z.rankScore=(structural?50:0)+z.structHits*12+z.score-z.dist*45});
+ // 第一賣壓仍優先最近的有效結構；第二賣壓必須是更上方的獨立結構，避免兩層太黏。
+ let validR=resist.filter(z=>z.structHits>=1||z.hasMA).sort((a,b)=>a.dist-b.dist||b.rankScore-a.rankScore);
+ let r1=validR[0]||resist.sort((a,b)=>a.dist-b.dist)[0];
+ let r2=r1?(validR.filter(z=>(z.rep??z.mid)>(r1.rep??r1.mid)*1.025).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0]||resist.filter(z=>(z.rep??z.mid)>(r1.rep??r1.mid)*1.025).sort((a,b)=>a.dist-b.dist)[0]):validR[1];
  return{supports,resist,s1,s2,r1,r2,m5,m20,m60};
 }
 function dynamicSupports(a){let cur=a.at(-1).close,cl=a.map(x=>x.close),m5=avg(cl.slice(-5)),m10=avg(cl.slice(-10)),m20=avg(cl.slice(-20)),m60=avg(cl.slice(-60)),rise5=cl.length>5?(cur/cl.at(-6)-1)*100:0,fast=rise5>=12||cur/m10-1>=.10,pr=priceResonance(a);let fallback=[m5,m20,m60].filter(v=>Number.isFinite(v)&&v<cur*.9965).sort((a,b)=>b-a),first=pr.s1||{lo:fallback[0],hi:fallback[0],mid:fallback[0],score:20,labels:["均線支撐"]},second=pr.s2||{lo:fallback[1]||m60,hi:fallback[1]||m60,mid:fallback[1]||m60,score:15,labels:["次級均線支撐"]};return{first:{...first,v:first.rep??first.mid},second:{...second,v:second.rep??second.mid},fast,rise5,m5,m10,m20,m60,pr}}

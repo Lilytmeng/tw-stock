@@ -227,11 +227,20 @@ function priceResonance(a){
  [[5,m5,1.5],[20,m20,2.5],[60,m60,3.0]].forEach(([n,v,w])=>{if(v<cur*(1-gap))add(supportPts,v,`MA${n}`,w,"ma");else if(v>cur*(1+gap))add(resistancePts,v,`MA${n}`,w,"ma")});
  function cluster(pts){let groups=[],tol=.009;for(let p of pts.sort((a,b)=>a.v-b.v)){let g=groups.find(g=>Math.abs(p.v-g.center)/g.center<=tol);if(g){g.items.push(p);g.center=g.items.reduce((s,z)=>s+z.v*z.w,0)/g.items.reduce((s,z)=>s+z.w,0)}else groups.push({center:p.v,items:[p]})}return groups.map(g=>{let vals=g.items.map(z=>z.v),raw=g.items.reduce((s,z)=>s+z.w,0),ranked=[...g.items].sort((a,b)=>b.w-a.w),struct=ranked.filter(z=>z.type!=="ma"&&z.type!=="price"),rep=(struct[0]||ranked[0]||{v:g.center}).v,types=[...new Set(g.items.map(z=>z.type))];return{lo:Math.min(...vals),hi:Math.max(...vals),mid:g.center,rep,score:Math.min(100,Math.round(raw*3.0+types.length*5+g.items.length*1.5)),labels:[...new Set(ranked.map(z=>z.label))],hits:g.items.length,types,hasMA:types.includes("ma"),structHits:struct.length}})}
  let supports=cluster(supportPts).filter(z=>(z.rep??z.mid)<cur*(1-gap)).map(z=>({...z,dist:(cur-(z.rep??z.mid))/cur}));
- // 型態優先：有前高轉支撐/回測/爆量K/缺口/波段低點者優先，再兼顧距離與共振。
- supports.forEach(z=>{let structural=z.types.some(t=>["flip","retest","volumeK","gap","swingLow"].includes(t));z.rankScore=(structural?55:0)+z.structHits*12+z.score-z.dist*55});
- let validS=supports.filter(z=>z.dist>=gap&&z.dist<=.15&&(z.structHits>=1||z.hasMA)).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist);
- let s1=validS[0]||supports.sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0];
- let s2=s1?(validS.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.975).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0]||supports.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.975).sort((a,b)=>b.rankScore-a.rankScore||a.dist-b.dist)[0]):validS[1];
+ // V6.17.1：支撐採「由近到遠的有效結構分層」。共振分數用來判斷強弱，不再讓很遠但高分的深層支撐跳成第一支撐。
+ supports.forEach(z=>{let structural=z.types.some(t=>["flip","retest","volumeK","gap","swingLow"].includes(t));z.rankScore=(structural?55:0)+z.structHits*12+z.score-z.dist*55;z.structural=structural});
+ // 近端候選需有型態結構，或至少有均線＋價格共振；一般單一低點不單獨升格。
+ let validS=supports.filter(z=>z.dist>=gap&&z.dist<=.18&&(z.structural||(z.hasMA&&z.hits>=2)));
+ // 依離現價距離切成約 2.2% 的「支撐層」，每一層選結構品質最好的代表；第一、第二支撐依層級由近到遠。
+ validS.sort((a,b)=>a.dist-b.dist);
+ let layers=[];
+ for(let z of validS){let g=layers.find(q=>Math.abs(z.dist-q.anchor)<=.022);if(g){g.items.push(z);g.anchor=Math.min(g.anchor,z.dist)}else layers.push({anchor:z.dist,items:[z]})}
+ layers.sort((a,b)=>a.anchor-b.anchor);
+ function bestInLayer(g){return [...g.items].sort((a,b)=>b.structHits-a.structHits||b.rankScore-a.rankScore||b.score-a.score||a.dist-b.dist)[0]}
+ let layerBest=layers.map(bestInLayer);
+ let s1=layerBest[0]||supports.sort((a,b)=>a.dist-b.dist||b.rankScore-a.rankScore)[0];
+ // 第二支撐必須與第一支撐有獨立間距；優先下一個有效層。
+ let s2=s1?(layerBest.find(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.975)||supports.filter(z=>(z.rep??z.mid)<(s1.rep??s1.mid)*.975).sort((a,b)=>a.dist-b.dist||b.rankScore-a.rankScore)[0]):layerBest[1];
  let resist=cluster(resistancePts).filter(z=>(z.rep??z.mid)>cur*(1+gap)).map(z=>({...z,dist:((z.rep??z.mid)-cur)/cur}));
  resist.forEach(z=>{let structural=z.types.some(t=>["swingHigh","volumeK","gap"].includes(t));z.rankScore=(structural?50:0)+z.structHits*12+z.score-z.dist*45});
  // 第一賣壓仍優先最近的有效結構；第二賣壓必須是更上方的獨立結構，避免兩層太黏。
